@@ -1,25 +1,24 @@
 var React = require('react');
 
 var WeatherForm = React.createClass({
-    onFormSubmit: function() {
-        var city = this.refs.city.value;
+    ucFirst: function(str) {
+        if (str.length === 0){
+            return;
+        } else if (str.length === 1){
+            return str.toUpperCase();
+        } else {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+    },
+    onFormSubmit: function(e) {
+        e.preventDefault();
 
-        this.refs.city.value = "";
+        var location = this.ucFirst(this.refs.location.value);
 
-        var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&&appid=7d85dc47d0c7f8d36ea406455d9a089a`;
+        this.refs.location.value = "";
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, false);
-        xhr.send();
-
-        var response = JSON.parse(xhr.response);
-
-        var temp = response.main.temp;
-
-        var message = `It is currently ${temp} degrees in ${city}.`;
-
-        if (typeof city === 'string' && city.length > 0){
-            this.props.setWeatherMessage(message);
+        if (typeof location === 'string' && location.length > 0){
+            this.props.setWeatherMessage(location);
         }
     },
     render: function() {
@@ -27,7 +26,7 @@ var WeatherForm = React.createClass({
             <div>
                 <form onSubmit={this.onFormSubmit}>
                     <div>
-                        <input type="text" ref="city" placeholder="Enter city name" />
+                        <input type="text" ref="location" placeholder="Enter city name" />
                     </div>
                     <div>
                         <button>Get Weather</button>
