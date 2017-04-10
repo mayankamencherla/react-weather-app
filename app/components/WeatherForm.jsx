@@ -7,7 +7,7 @@ var WeatherForm = React.createClass({
         } else if (str.length === 1){
             return str.toUpperCase();
         } else {
-            return str.charAt(0).toUpperCase() + str.slice(1);
+            return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
         }
     },
     onFormSubmit: function(e) {
@@ -29,7 +29,7 @@ var WeatherForm = React.createClass({
                         <input type="text" ref="location" placeholder="Enter city name" />
                     </div>
                     <div>
-                        <button>Get Weather</button>
+                        <button className="hollow button expanded">Get Weather</button>
                     </div>
                 </form>
             </div>
