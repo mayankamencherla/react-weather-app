@@ -16,7 +16,10 @@ var Weather = React.createClass({
     setWeatherMessage: function(location) {
         var that = this;
 
-        this.setState({isLoading: true});
+        this.setState({
+            isLoading: true,
+            message: "",
+        });
 
         openWeatherMap.getTemp(location).then(function (temp){
             var message = `It is currently ${temp} degrees in ${location}.`;
@@ -30,6 +33,20 @@ var Weather = React.createClass({
                 errorMessage: errorMessage.message
             });
         });
+    },
+    makeWeatherRequest: function(props){
+        var location = props.location.query.location;
+
+        if (location && location.length > 0){
+            this.setWeatherMessage(location);
+            window.location.hash = '#/';
+        }
+    },
+    componentDidMount: function() {
+        this.makeWeatherRequest(this.props);
+    },
+    componentWillReceiveProps: function(newProps) {
+        this.makeWeatherRequest(newProps);
     },
     render: function() {
         var {message, isLoading, errorMessage} = this.state;

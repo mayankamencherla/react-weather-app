@@ -5,10 +5,14 @@ var Nav = React.createClass({
     onSearch: function(e) {
         e.preventDefault();
 
-        var search = this.refs.search.value;
+        var location = this.refs.search.value;
         this.refs.search.value = '';
 
-        alert(search);
+        var encodedLocation = encodeURIComponent(location);
+
+        if (location && location.length > 0){
+            window.location.hash = `#/?location=${encodedLocation}`;
+        }
     },
     render: function() {
         return (
