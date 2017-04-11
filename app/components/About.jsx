@@ -8,16 +8,16 @@ var About = (props) => {
             <p>Making this app was a great experience. I learnt the ins and outs of the React.js framework. I also learnt some HTML, CSS and the foundation framework which I used to style the app. I have highlighted some of the skills needed to make this app yourself down below:</p>
             <ol>
                 <li>
-                    <a href='http://eloquentjavascript.net'>JavaScript</a>
+                    <a href='http://eloquentjavascript.net' target="_blank">JavaScript</a>
                 </li>
                 <li>
-                    <a href='https://facebook.github.io/react/tutorial/tutorial.html'>React.js library</a>
+                    <a href='https://facebook.github.io/react/tutorial/tutorial.html' target="_blank">React.js library</a>
                 </li>
                 <li>
-                    <a href='https://www.codecademy.com/learn/web'>HTML/CSS</a>
+                    <a href='https://www.codecademy.com/learn/web' target="_blank">HTML/CSS</a>
                 </li>
                 <li>
-                    <a href='http://foundation.zurb.com/sites/docs/'>Foundation CSS framework</a>
+                    <a href='http://foundation.zurb.com/sites/docs/' target="_blank">Foundation CSS framework</a>
                 </li>
             </ol>
         </div>
